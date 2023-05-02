@@ -1,0 +1,33 @@
+.results__error {
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.results__error--svg {
+  width: 50%;
+  height: 50%;
+  color: rgb(100, 0, 0);
+}
+
+.results__error--title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.results__error--p {
+  color: rgb(100, 100, 100);
+  margin-bottom: 1rem;
+}
+
+.results__error--btn {
+  border: none;
+  background-color: rgb(100, 0, 0);
+  color: white;
+  transition: all 0.3s ease;
+  padding: 0.5rem 2.5rem;
+  font-size: 0.875rem;
+}
+
+.results__error--btn:hover {
+  background-color: red;
+}

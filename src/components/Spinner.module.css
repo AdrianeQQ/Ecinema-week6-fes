@@ -1,0 +1,17 @@
+.results__loading {
+  grid-column: 1 / -1;
+  width: 5rem;
+  height: 5rem;
+  margin: auto;
+  animation: 1s infinite spin;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
