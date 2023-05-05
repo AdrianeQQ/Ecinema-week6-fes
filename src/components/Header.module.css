@@ -10,6 +10,7 @@
 .header__logo--container {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .header__logo {
@@ -99,14 +100,36 @@
     transition: all 1s ease;
     position: relative;
   }
+}
 
-  .header__hamburger {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    transition: all 1s ease;
-    position: relative;
-  }
+.header__logo--alt,
+.header__name--alt {
+  color: rgb(100, 0, 0);
+}
+
+.header__btn--alt2 {
+  color: rgb(175, 0, 0);
+}
+
+.header__btn--alt3 {
+  color: black;
+}
+
+.header__btn--alt3::after {
+  background-color: black;
+}
+
+.header__btn--alt2::after {
+  background-color: rgb(175, 0, 0);
+}
+
+.header__btn--alt4 {
+  background-color: rgb(100, 0, 0);
+  color: white;
+}
+
+.header__dot--alt {
+  background-color: rgb(100, 0, 0);
 }
 
 @media (max-width: 30rem) {

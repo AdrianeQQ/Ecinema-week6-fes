@@ -3,7 +3,7 @@ import classes from "./Poster.module.css";
 
 const Poster = ({ film }) => {
   return (
-    <a href={`/${film.imdbID}`} className={classes.results__film}>
+    <a href={`/film/${film.imdbID}`} className={classes.results__film}>
       <div className={classes["results__poster--container"]}>
         {film.Poster !== "N/A" ? (
           <img

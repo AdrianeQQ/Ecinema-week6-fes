@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Spinner.module.css";
 
-const Spinner = () => {
+const Spinner = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,9 @@ const Spinner = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      class={`w-6 h-6 ${classes.results__loading}`}
+      className={`w-6 h-6 ${classes.results__loading} ${
+        props.isAlt ? classes["results__loading--alt"] : ""
+      }`}
     >
       <path
         strokeLinecap="round"

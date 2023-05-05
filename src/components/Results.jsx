@@ -39,7 +39,9 @@ const Results = (props) => {
         {props.isLoading ? <Spinner /> : null}
         {props.hasError ? <Error resetFilters={props.resetFilters} /> : null}
         {props.searchResult.length > 0
-          ? props.searchResult.map((film) => <Poster film={film} />)
+          ? props.searchResult.map((film) => (
+              <Poster key={film.imdbID} film={film} />
+            ))
           : null}
       </div>
     </section>

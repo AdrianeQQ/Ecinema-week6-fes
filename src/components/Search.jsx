@@ -6,44 +6,12 @@ const Search = (props) => {
   useEffect(() => {
     previousSearchValue.current = props.searchValue;
   }, [props.searchValue]);
-  const search = async (event) => {
-    if (event) event.preventDefault();
-    props.setSearchResult([]);
-    props.setHasError(false);
-    const titleSearch = props.searchValue;
-    props.setSearchBarContent(
-      <>
-        Search results for: <span>"{titleSearch}"</span>{" "}
-        {props.selectedYear ? (
-          <>
-            in <span>"{props.selectedYear}"</span>
-          </>
-        ) : (
-          ""
-        )}
-      </>
-    );
-    props.setIsLoading(true);
-    const response = await fetch(
-      `http://www.omdbapi.com/?${titleSearch ? `s=${titleSearch}` : "s="}${
-        props.selectedYear ? `&y=${props.selectedYear}` : ""
-      }&apikey=9a872763`
-    );
-    const data = await response.json();
-    props.setIsLoading(false);
-    if (data.Error) {
-      props.setHasError(true);
-      return;
-    }
-    console.log(data.Search.slice(0, 6));
-    props.setSearchResult(data.Search.slice(0, 6));
-  };
   return (
     <section className={classes.section__search}>
       <h1 className={classes.search__heading}>Browse our films</h1>
       <form
         className={classes.search__form}
-        onSubmit={(event) => search(event)}
+        onSubmit={(event) => props.search(event, props.searchValue)}
       >
         <input
           type="text"
@@ -60,7 +28,7 @@ const Search = (props) => {
             strokeWidth="1.5"
             stroke="currentColor"
             className={`w-6 h-6 ${classes.search__svg}`}
-            onClick={search}
+            onClick={() => props.search(null, props.searchValue, props.selectedYear)}
           >
             <path
               strokeLinecap="round"

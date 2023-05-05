@@ -11,7 +11,7 @@ const Modal = (props) => {
       <a href="/" className={classes.modal__link}>
         Home
       </a>
-      <a href="/" className={classes.modal__link}>
+      <a href="/findyourfilm" className={classes.modal__link}>
         Find Your Film
       </a>
       <a href="/" className={classes.modal__link}>

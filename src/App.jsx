@@ -1,48 +1,75 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import Search from "./components/Search";
-import Results from "./components/Results";
-import Modal from "./components/Modal";
+import { Route, Routes } from "react-router-dom";
+import { useNavigate } from "react-router";
+import SearchPage from "./SearchPage";
+import MainPage from "./MainPage";
+import FilmPage from "./FilmPage";
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState(null);
   const [searchBarContent, setSearchBarContent] = useState("Search for a film");
-  const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
-  const resetFilters = () => {
-    setSelectedYear(null);
+  const navigate = useNavigate();
+  const search = async (event, titleSearch, selectedYear) => {
+    if (event) event.preventDefault();
+    setSearchResult([]);
     setHasError(false);
-    setSearchBarContent("Search for a film");
-    setSearchValue("");
+    setSearchBarContent(
+      <>
+        Search results for: <span>"{titleSearch}"</span>{" "}
+        {selectedYear ? (
+          <>
+            in <span>"{selectedYear}"</span>
+          </>
+        ) : (
+          ""
+        )}
+      </>
+    );
+    setIsLoading(true);
+    const response = await fetch(
+      `http://www.omdbapi.com/?${titleSearch ? `s=${titleSearch}` : "s="}${
+        selectedYear ? `&y=${selectedYear}` : ""
+      }&apikey=9a872763`
+    );
+    const data = await response.json();
+    setIsLoading(false);
+    if (data.Error) {
+      setHasError(true);
+      return;
+    }
+    // console.log(data.Search.slice(0, 6));
+    setSearchResult(data.Search.slice(0, 6));
+    navigate("/findyourfilm");
   };
   return (
-    <>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      <main>
-        <Search
-          setSearchBarContent={setSearchBarContent}
-          selectedYear={selectedYear}
-          setIsLoading={setIsLoading}
-          setHasError={setHasError}
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          setSearchResult={setSearchResult}
-        />
-        <Results
-          selectedYear={selectedYear}
-          setSelectedYear={setSelectedYear}
-          searchBarContent={searchBarContent}
-          isLoading={isLoading}
-          hasError={hasError}
-          resetFilters={resetFilters}
-          searchResult={searchResult}
-        />
-      </main>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <MainPage
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
+            search={search}
+          />
+        }
+      />
+      <Route
+        path="/findyourfilm"
+        element={
+          <SearchPage
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
+            searchResult={searchResult}
+            search={search}
+            hasError={hasError}
+            searchBarContent={searchBarContent}
+          />
+        }
+      />
+      <Route path="/film/:filmId" element={<FilmPage />} />
+    </Routes>
   );
 };
 
