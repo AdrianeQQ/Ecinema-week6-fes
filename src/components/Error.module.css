@@ -7,6 +7,7 @@
   width: 50%;
   height: 50%;
   color: rgb(100, 0, 0);
+  max-width: 18.75rem;
 }
 
 .results__error--title {
@@ -26,6 +27,7 @@
   transition: all 0.3s ease;
   padding: 0.5rem 2.5rem;
   font-size: 0.875rem;
+  text-decoration: none;
 }
 
 .results__error--btn:hover {

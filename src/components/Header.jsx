@@ -1,11 +1,12 @@
 import React from "react";
 import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
     <header>
       <nav className={classes.header__nav}>
-        <a href="/" className={classes["header__logo--container"]}>
+        <Link to="/" className={classes["header__logo--container"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,33 +30,33 @@ const Header = (props) => {
           >
             ECinema
           </h2>
-        </a>
+        </Link>
         <div className={classes["header__buttons--container"]}>
           <div className={classes.header__buttons}>
-            <a
-              href="/"
+            <Link
+              to="/"
               className={`${classes.header__btn} ${
                 props.isAlt ? classes["header__btn--alt2"] : ""
               }`}
             >
               Home
-            </a>
-            <a
-              href="/findyourfilm"
+            </Link>
+            <Link
+              to="/findyourfilm"
               className={`${classes.header__btn} ${
                 props.isAlt ? classes["header__btn--alt3"] : ""
               }`}
             >
               Find your film
-            </a>
-            <a
-              href="/"
+            </Link>
+            <Link
+              to="/"
               className={`${classes["header__btn--alt"]} ${
                 props.isAlt ? classes["header__btn--alt4"] : ""
               }`}
             >
               Contact
-            </a>
+            </Link>
           </div>
           <div
             className={`${classes.header__hamburger} ${

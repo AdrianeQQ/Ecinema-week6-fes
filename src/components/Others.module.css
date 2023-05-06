@@ -1,0 +1,26 @@
+.others__similar {
+  font-size: 2rem;
+}
+
+.others__similar--container {
+  display: flex;
+  padding-bottom: 3rem;
+}
+
+.others__section {
+  width: 100%;
+  max-width: 75rem;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 64rem) {
+  .others__similar--container {
+    flex-direction: column;
+  }
+
+  .others__similar {
+    text-align: center;
+    font-size: 2rem;
+  }
+}

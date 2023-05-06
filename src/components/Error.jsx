@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Error.module.css";
+import { Link } from "react-router-dom";
 
 const Error = (props) => {
   return (
@@ -19,17 +20,27 @@ const Error = (props) => {
         />
       </svg>
       <h3 className={classes["results__error-title"]}>
-        Could not find any matches related to your search.
+        {props.isAlt
+          ? "Something went wrong."
+          : "Could not find any matches related to your search."}
       </h3>
       <p className={classes["results__error--p"]}>
-        Please change the filter or reset it below.
+        {props.isAlt
+          ? "Please try again later."
+          : "Please change the filter or reset it below."}
       </p>
-      <button
-        className={classes["results__error--btn"]}
-        onClick={props.resetFilters}
-      >
-        Reset filter
-      </button>
+      {props.isAlt ? (
+        <Link to="/findyourfilm" className={classes["results__error--btn"]}>
+          Go back
+        </Link>
+      ) : (
+        <button
+          className={classes["results__error--btn"]}
+          onClick={props.resetFilters}
+        >
+          Reset filter
+        </button>
+      )}
     </div>
   );
 };

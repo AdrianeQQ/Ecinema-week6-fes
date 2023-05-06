@@ -1,0 +1,150 @@
+.film__section {
+  max-width: 75rem;
+  margin: auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.film__poster--error {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 3rem;
+  color: rgb(100, 0, 0);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.film__container {
+  display: flex;
+  padding: 3rem 0 5rem 0;
+  gap: 1rem;
+  width: 100%;
+}
+
+.film__img--holder {
+  width: 40%;
+  text-align: center;
+}
+
+.film__details--container {
+  width: 60%;
+}
+
+.film__img {
+  width: 80%;
+  box-shadow: 0 0 0.875rem rgb(0, 0, 0, 0.4);
+}
+
+.film__title {
+  font-size: 1.875rem;
+}
+
+.film__director {
+  text-transform: uppercase;
+  color: rgba(100, 0, 0, 0.75);
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.film__genre--container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.film__genre {
+  background-color: rgb(100, 0, 0);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.film__header--container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.film__info--container {
+  display: flex;
+  gap: 1rem;
+  color: rgb(100, 100, 100);
+}
+
+.film__reviews--container {
+  text-align: right;
+}
+
+.film__stars--container {
+  display: flex;
+  justify-content: right;
+}
+
+.film__description--holder {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.film__description {
+  line-height: 1.6;
+  color: rgb(100, 100, 100);
+}
+
+.film__rating {
+  font-weight: 600;
+  color: rgb(100, 0, 0);
+  font-size: 1.25rem;
+}
+
+.film__rating span {
+  color: rgb(100, 100, 100);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.film__rating--amount {
+  color: rgb(100, 100, 100);
+  font-size: 0.875rem;
+}
+
+.film__actors--container {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.film__actor {
+  background-color: rgb(100, 0, 0);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.film__actors--holder {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 64rem) {
+  .film__container {
+    flex-direction: column;
+  }
+
+  .film__details--container {
+    width: 100%;
+  }
+
+  .film__img--holder {
+    width: 100%;
+  }
+
+  .film__img {
+    max-width: 20rem;
+  }
+}

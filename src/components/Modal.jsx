@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Modal.module.css";
+import { Link } from "react-router-dom";
 
 const Modal = (props) => {
   return (
@@ -8,15 +9,15 @@ const Modal = (props) => {
         props.isModalOpen ? classes["modal--open"] : ""
       }`}
     >
-      <a href="/" className={classes.modal__link}>
+      <Link to="/" className={classes.modal__link}>
         Home
-      </a>
-      <a href="/findyourfilm" className={classes.modal__link}>
+      </Link>
+      <Link to="/findyourfilm" className={classes.modal__link}>
         Find Your Film
-      </a>
-      <a href="/" className={classes.modal__link}>
+      </Link>
+      <Link to="/" className={classes.modal__link}>
         Contact
-      </a>
+      </Link>
       <div
         className={classes.exit__icon}
         onClick={() => props.setIsModalOpen(false)}

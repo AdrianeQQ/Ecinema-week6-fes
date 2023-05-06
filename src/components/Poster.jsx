@@ -1,9 +1,15 @@
 import React from "react";
 import classes from "./Poster.module.css";
+import { Link } from "react-router-dom";
 
-const Poster = ({ film }) => {
+const Poster = ({ film, isAlt }) => {
   return (
-    <a href={`/film/${film.imdbID}`} className={classes.results__film}>
+    <Link
+      to={`/film/${film.imdbID}`}
+      className={`${classes.results__film} ${
+        isAlt ? classes["results__film--alt"] : ""
+      }`}
+    >
       <div className={classes["results__poster--container"]}>
         {film.Poster !== "N/A" ? (
           <img
@@ -13,7 +19,7 @@ const Poster = ({ film }) => {
           />
         ) : (
           <div
-            class={`${classes.results__poster} ${classes["results__image--error"]}`}
+            className={`${classes.results__poster} ${classes["results__image--error"]}`}
           >
             No poster
           </div>
@@ -46,7 +52,7 @@ const Poster = ({ film }) => {
         </svg>
         <span>{film.Year}</span>
       </div>
-    </a>
+    </Link>
   );
 };
 

@@ -39,7 +39,6 @@ const App = () => {
       setHasError(true);
       return;
     }
-    // console.log(data.Search.slice(0, 6));
     setSearchResult(data.Search.slice(0, 6));
     navigate("/findyourfilm");
   };
@@ -68,7 +67,10 @@ const App = () => {
           />
         }
       />
-      <Route path="/film/:filmId" element={<FilmPage />} />
+      <Route
+        path="/film/:filmId"
+        element={<FilmPage searchResult={searchResult} />}
+      />
     </Routes>
   );
 };
