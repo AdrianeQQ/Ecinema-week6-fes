@@ -8,7 +8,7 @@ const SearchPage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedYear, setSelectedYear] = useState(null);
   const [searchValue, setSearchValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+
   const resetFilters = () => {
     setSelectedYear(null);
     props.setHasError(false);
@@ -25,8 +25,8 @@ const SearchPage = (props) => {
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           search={props.search}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+          currentPage={props.currentPage}
+          setCurrentPage={props.setCurrentPage}
         />
         <Results
           selectedYear={selectedYear}
@@ -36,8 +36,8 @@ const SearchPage = (props) => {
           hasError={props.hasError}
           resetFilters={resetFilters}
           searchResult={props.searchResult}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
+          currentPage={props.currentPage}
+          setCurrentPage={props.setCurrentPage}
           pages={props.pages}
           search={props.search}
           searchValue={searchValue}

@@ -12,11 +12,11 @@ const App = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [searchedPhrase, setSearchedPhrase] = useState("");
   const [pages, setPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const search = async (event, titleSearch, selectedYear, page, reset) => {
+  const search = async (event, titleSearch, selectedYear, page) => {
     if (titleSearch.length === 0) return;
     if (event) event.preventDefault();
-    if (reset) page = 1;
     setSearchResult([]);
     setSearchedPhrase(titleSearch);
     setHasError(false);
@@ -75,6 +75,8 @@ const App = () => {
             setHasError={setHasError}
             setSearchBarContent={setSearchBarContent}
             searchedPhrase={searchedPhrase}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         }
       />
