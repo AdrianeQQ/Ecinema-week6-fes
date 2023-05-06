@@ -3,6 +3,7 @@ import classes from "./Results.module.css";
 import Spinner from "./Spinner";
 import Error from "./Error";
 import Poster from "./Poster";
+import Pagination from "./Pagination";
 
 const Results = (props) => {
   const selectYear = (event) => {
@@ -33,6 +34,17 @@ const Results = (props) => {
             className={classes["results__filter--slider"]}
             onClick={(event) => selectYear(event)}
           ></div>
+          {props.pages > 1 && (
+            <Pagination
+              search={props.search}
+              pages={props.pages}
+              searchValue={props.searchValue}
+              selectedYear={props.selectYear}
+              currentPage={props.currentPage}
+              setCurrentPage={props.setCurrentPage}
+              searchedPhrase={props.searchedPhrase}
+            />
+          )}
         </div>
       </div>
       <div className={classes.results__list}>
@@ -44,6 +56,17 @@ const Results = (props) => {
             ))
           : null}
       </div>
+      {props.pages > 1 && !props.isLoading && (
+        <Pagination
+          search={props.search}
+          pages={props.pages}
+          searchValue={props.searchValue}
+          selectedYear={props.selectYear}
+          currentPage={props.currentPage}
+          setCurrentPage={props.setCurrentPage}
+          searchedPhrase={props.searchedPhrase}
+        />
+      )}
     </section>
   );
 };

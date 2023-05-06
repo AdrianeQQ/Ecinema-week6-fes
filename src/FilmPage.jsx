@@ -15,6 +15,7 @@ const FilmPage = (props) => {
   const params = useParams();
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       const response = await fetch(
         `http://www.omdbapi.com/?i=${params.filmId}&plot=full&apikey=9a872763`
       );

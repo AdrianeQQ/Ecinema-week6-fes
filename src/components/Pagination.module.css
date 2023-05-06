@@ -1,0 +1,33 @@
+.results__pages--container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.results__page {
+  color: rgb(100, 100, 100);
+  font-size: 1.25rem;
+}
+
+.results__page--btn {
+  border: none;
+  background-color: rgb(100, 0, 0);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.results__page--btn:hover {
+  background-color: red;
+}
+
+.results__pages--svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

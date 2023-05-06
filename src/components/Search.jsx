@@ -3,15 +3,19 @@ import classes from "./Search.module.css";
 
 const Search = (props) => {
   const previousSearchValue = useRef("");
+  const { searchValue } = props;
   useEffect(() => {
-    previousSearchValue.current = props.searchValue;
-  }, [props.searchValue]);
+    previousSearchValue.current = searchValue;
+  }, [searchValue]);
   return (
     <section className={classes.section__search}>
       <h1 className={classes.search__heading}>Browse our films</h1>
       <form
         className={classes.search__form}
-        onSubmit={(event) => props.search(event, props.searchValue)}
+        onSubmit={(event) => {
+          props.search(event, props.searchValue, props.selectedYear, 1);
+          props.setCurrentPage(1);
+        }}
       >
         <input
           type="text"
@@ -28,7 +32,10 @@ const Search = (props) => {
             strokeWidth="1.5"
             stroke="currentColor"
             className={`w-6 h-6 ${classes.search__svg}`}
-            onClick={() => props.search(null, props.searchValue, props.selectedYear)}
+            onClick={() => {
+              props.search(null, props.searchValue, props.selectedYear, 1);
+              props.setCurrentPage(1);
+            }}
           >
             <path
               strokeLinecap="round"

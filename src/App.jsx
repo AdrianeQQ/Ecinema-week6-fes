@@ -10,10 +10,15 @@ const App = () => {
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+  const [searchedPhrase, setSearchedPhrase] = useState("");
+  const [pages, setPages] = useState(1);
   const navigate = useNavigate();
-  const search = async (event, titleSearch, selectedYear) => {
+  const search = async (event, titleSearch, selectedYear, page, reset) => {
+    if (titleSearch.length === 0) return;
     if (event) event.preventDefault();
+    if (reset) page = 1;
     setSearchResult([]);
+    setSearchedPhrase(titleSearch);
     setHasError(false);
     setSearchBarContent(
       <>
@@ -31,15 +36,17 @@ const App = () => {
     const response = await fetch(
       `http://www.omdbapi.com/?${titleSearch ? `s=${titleSearch}` : "s="}${
         selectedYear ? `&y=${selectedYear}` : ""
-      }&apikey=9a872763`
+      }&page=${page}&apikey=9a872763`
     );
     const data = await response.json();
     setIsLoading(false);
     if (data.Error) {
       setHasError(true);
+      setPages(1);
       return;
     }
-    setSearchResult(data.Search.slice(0, 6));
+    setPages(Math.ceil(+data.totalResults / 10));
+    setSearchResult(data.Search.slice(0, 10));
     navigate("/findyourfilm");
   };
   return (
@@ -64,6 +71,10 @@ const App = () => {
             search={search}
             hasError={hasError}
             searchBarContent={searchBarContent}
+            pages={pages}
+            setHasError={setHasError}
+            setSearchBarContent={setSearchBarContent}
+            searchedPhrase={searchedPhrase}
           />
         }
       />
